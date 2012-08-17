@@ -5,4 +5,4 @@ inherit core-image
 
 IMAGE_FEATURES = "package-management ssh-server-dropbear debug-tweaks"
 
-IMAGE_INSTALL += "procps util-linux"
+IMAGE_INSTALL += "procps util-linux python-robovero"
