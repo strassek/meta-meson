@@ -1,7 +1,7 @@
 DESCRIPTION = "Python Client Library for RoboVero."
 HOMEPAGE = "http://robovero.org"
 SECTION = "devel/python"
-LICENSE = "BSD 2-Clause"
+LICENSE = "BSD-2-Clause"
 LIC_FILES_CHKSUM = "file://COPYING;md5=52b7490557d2fd1a2c673d32aa5d4b8a"
 
 PR = "r0"
@@ -12,7 +12,7 @@ SRC_URI = "git://github.com/robovero/python.git;protocol=git"
 S = "${WORKDIR}/git"
 
 DEPENDS += "python"
-RDEPENDS_${PN} = "python-core"
+RDEPENDS_${PN} = "python-core python-pyserial"
 
 inherit python-dir
 
