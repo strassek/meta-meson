@@ -23,6 +23,7 @@ TOOLS_INSTALL = " \
 
 MESON_INSTALL = " \
   python-robovero \
+  storm \
 "
 
 IMAGE_INSTALL += " \

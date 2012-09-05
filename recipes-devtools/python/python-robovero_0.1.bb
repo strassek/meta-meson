@@ -11,8 +11,7 @@ SRC_URI = "git://github.com/robovero/python.git;protocol=git"
 
 S = "${WORKDIR}/git"
 
-DEPENDS += "python"
-RDEPENDS_${PN} = "python-core python-pyserial"
+RDEPENDS_${PN} = "python-pyserial"
 
 inherit python-dir
 
