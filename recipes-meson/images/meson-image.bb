@@ -25,9 +25,20 @@ MESON_INSTALL = " \
   python-robovero \
 "
 
+TI_DSP_INSTALL = " \
+  task-gstreamer-ti \
+  ti-codec-engine \
+  ti-dmai \
+  ti-dspbios \
+  ti-dsplink \
+  ti-dsplink-module \
+  ti-cmem-module \
+"
+
 IMAGE_INSTALL += " \
   ${MACHINE_EXTRA_RRECOMMENDS} \
   ${FIRMWARE_INSTALL} \
   ${TOOLS_INSTALL} \
   ${MESON_INSTALL} \
+  ${TI_DSP_INSTALL} \
 "
