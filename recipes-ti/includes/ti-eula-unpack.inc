@@ -20,7 +20,7 @@ python ti_bin_do_unpack() {
     import os
 
     # InstallJammer requires 32bit version of glibc
-    lib32path = '/lib'
+    lib32path = '/lib/i386-linux-gnu'
     if os.path.exists('/lib64') and (os.path.islink('/lib64') or os.path.islink('/lib') or os.path.exists('/lib32')):
         lib32path = '/lib32'
     if not os.path.exists('%s/libc.so.6' % lib32path):
