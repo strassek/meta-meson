@@ -17,5 +17,6 @@ SRC_URI = " \
   git://www.sakoman.com/git/linux-omap-2.6;branch=omap-3.5;protocol=git \
   file://defconfig \
   file://${BOOT_SPLASH} \
+  file://add_missing_ioctls.patch \
 "
 
