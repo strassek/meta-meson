@@ -7,6 +7,8 @@ require ../includes/ti-paths.inc
 require ../includes/ti-staging.inc
 require ../includes/ti-eula-unpack.inc
 
+inherit native
+
 S = "${WORKDIR}/xdctools_${PV}"
 
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc/${PV}/exports/xdctools_setuplinux_${PV}.bin;name=xdcbin"
@@ -60,3 +62,14 @@ lib.so \
 libcairo.so.2 \
 "
 
+PACKAGES += "${PN}-bin"
+FILES_${PN}-bin = "${XDC_INSTALL_DIR_RECIPE}/bin/* "
+
+PACKAGES += "${PN}-doc"
+FILES_${PN}-doc = "${XDC_INSTALL_DIR_RECIPE}/docs/* "
+
+PACKAGES += "${PN}-jre"
+FILES_${PN}-jre = "${XDC_INSTALL_DIR_RECIPE}/jre/* "
+
+PACKAGES += "${PN}-misc"
+FILES_${PN}-misc = "${XDC_INSTALL_DIR_RECIPE}/packages/* "
