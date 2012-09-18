@@ -22,6 +22,8 @@ NETWORK_INSTALL = " \
 "
 
 TOOLS_INSTALL = " \
+  gstreamer-ti \
+  gst-plugins-good \
   procps \
   util-linux \
   media-ctl v4l-utils yavta \
@@ -32,7 +34,6 @@ MESON_INSTALL = " \
 "
 
 TI_DSP_INSTALL = " \
-  task-gstreamer-ti \
   ti-codec-engine \
   ti-dmai \
   ti-dspbios \
