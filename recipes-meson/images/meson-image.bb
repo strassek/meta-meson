@@ -16,9 +16,15 @@ FIRMWARE_INSTALL = " \
   linux-firmware-wl12xx \
 "  
 
+NETWORK_INSTALL = " \
+  wpa-supplicant \
+  wireless-tools \
+"
+
 TOOLS_INSTALL = " \
   procps \
   util-linux \
+  media-ctl v4l-utils yavta \
 "
 
 MESON_INSTALL = " \
@@ -26,9 +32,21 @@ MESON_INSTALL = " \
   storm \
 "
 
+TI_DSP_INSTALL = " \
+  task-gstreamer-ti \
+  ti-codec-engine \
+  ti-dmai \
+  ti-dspbios \
+  ti-dsplink \
+  ti-dsplink-module \
+  ti-cmem-module \
+"
+
 IMAGE_INSTALL += " \
   ${MACHINE_EXTRA_RRECOMMENDS} \
   ${FIRMWARE_INSTALL} \
+  ${NETWORK_INSTALL} \
   ${TOOLS_INSTALL} \
   ${MESON_INSTALL} \
+  ${TI_DSP_INSTALL} \
 "
