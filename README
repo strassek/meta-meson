@@ -17,6 +17,59 @@ Poky
   branch: denzil
   revision: HEAD
 
+TI C6000 Code Generation Tools
+  URI: https://www-a.ti.com/downloads/sds_support/TICodegenerationTools/
+  version: 7.2.7
+  note: You will likely need to create an account to start the download.
+
+Building meta-meson
+------------------
+
+  git clone -b denzil git://git.yoctoproject.org/poky
+  cd poky
+  git clone git://git.yoctoproject.org/meta-meson
+  . ./oe-init-build-env
+
+  # In order to build the dsp accelerated codecs, you will need to manually
+  # download the 'ti_cgt_c6000_7.2.7_setup_linux_x86.bin' binary located at
+  # 'https://www-a.ti.com/downloads/sds_support/TICodegenerationTools/' and
+  # place it in your build directory. You will need to sign up for an account
+  # with TI to start the download. Please do this before proceeding.
+  mkdir downloads
+  cp <path/to/download>/ti_cgt_c6000_7.2.7_setup_linux_x86.bin downloads
+  md5sum downloads/ti_cgt_c6000_7.2.7_setup_linux_x86.bin > \
+         downloads/ti_cgt_c6000_7.2.7_setup_linux_x86.bin.md5
+  sha256sum downloads/ti_cgt_c6000_7.2.7_setup_linux_x86.bin > \
+            downloads/ti_cgt_c6000_7.2.7_setup_linux_x86.bin.sha256
+  
+  # A limitation of the current setup requires you to mirror the tools in a
+  # separate directory.
+  cp -r downloads mirror
+
+  # Then add the following lines to your local.conf
+  SOURCE_MIRROR_URL ?= "file://mirror/"
+  INHERIT += "own-mirrors"
+  BB_GENERATE_MIRROR_TARBALLS = "1"
+
+  # While you have local.conf open, change the machine and distro variables
+  # to overo and meson, respectively. meta-meson requires the use of at least 
+  # one commercial license, so be sure to add 'commercial' to your whitelist.
+  MACHINE = "overo"
+  DISTRO = "meson"
+  LICENSE_FLAGS_WHITELIST += "commercial"
+
+  # After you are finished editing local.conf, be sure to add the layer to
+  # your bblayers.conf file. For example:
+  BBLAYERS ?= " \
+    /home/strassek/poky/meta \
+    /home/strassek/poky/meta-yocto \
+    /home/strassek/poky/meta-meson \
+    "
+
+  # That should be all the changes you need to make. To start a build run 
+  # the following command:
+  bitbake meson-image
+ 
 Maintenance
 -----------
 
