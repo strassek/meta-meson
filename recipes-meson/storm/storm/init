@@ -20,29 +20,31 @@ DESC="Storm"
 PID=/var/run/storm.pid
 
 case "$1" in
-	start)
-		echo "Starting $DESC"
-		storm-server --start
-    	;;
-	stop)
-		echo "Stopping $DESC"
-		storm-server --stop
-		;;
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		if [ "$?" != "0" ]; then
-			exit 1
-		fi
-		;;
-	force-reload)
-	    pkill -9 storm
-	    $0 start
-	    ;;
-	*)
-		echo "Usage: $0 {start|stop|restart|force-reload}"
-		exit 1 
+    start)
+        echo "Starting $DESC"
+        media-ctl -r -l '"mt9v032 3-005c":0->"OMAP3 ISP CCDC":0[1], "OMAP3 ISP CCDC":2->"OMAP3 ISP preview":0[1], "OMAP3 ISP preview":1->"OMAP3 ISP resizer":0[1], "OMAP3 ISP resizer":1->"OMAP3 ISP resizer output":0[1]'
+        media-ctl -f '"mt9v032 3-005c":0[SGRBG10 752x480], "OMAP3 ISP CCDC":2[SGRBG10 752x480], "OMAP3 ISP preview":1[UYVY 752x480], "OMAP3 ISP resizer":1[UYVY 752x480]'
+        storm-server --start
+        ;;
+    stop)
+        echo "Stopping $DESC"
+        storm-server --stop
+        ;;
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        if [ "$?" != "0" ]; then
+            exit 1
+        fi
+        ;;
+    force-reload)
+        pkill -9 storm
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|force-reload}"
+        exit 1 
 esac
 
 exit 0

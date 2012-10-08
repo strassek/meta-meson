@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/strassek/${PN}.git;protocol=git;branch=meson \
            file://init \
 "
 
-RDEPENDS_${PN} = "python-robovero python-logging python-xmlrpc"
+RDEPENDS_${PN} = "python-robovero python-logging python-xmlrpc python-gst"
 
 S = "${WORKDIR}/git"
 
@@ -17,7 +17,7 @@ USERADD_PACKAGES = "${PN}"
 USERADD_PARAM_${PN} = "--system --no-create-home --home-dir /var/run/${PN} --shell /bin/false --user-group storm"
 INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME_${PN} = "${PN}"
-INITSCRIPT_PARAMS_${PN} = "defaults 9"
+INITSCRIPT_PARAMS_${PN} = "start 99 5 3 2 . stop 10 0 1 6 ."
 
 inherit setuptools
 
