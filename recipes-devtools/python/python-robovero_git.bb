@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=52b7490557d2fd1a2c673d32aa5d4b8a"
 PR = "r1"
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/strassek/pyRoboVero.git;protocol=git"
+SRC_URI = "git://github.com/robovero/python.git;protocol=git"
 
 S = "${WORKDIR}/git"
 
