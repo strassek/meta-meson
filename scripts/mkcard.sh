@@ -8,6 +8,7 @@ BOOT_MNT=/media/boot
 ROOTFS_DEV=/dev/sdb2
 ROOTFS_MNT=/media/rootfs
 MACHINE=overo
+IMAGE=meson-image
 
 umount ${BOOT_DEV}
 umount ${ROOTFS_DEV}
@@ -34,7 +35,7 @@ mount -t ext3 ${ROOTFS_DEV} ${ROOTFS_MNT}
 cp ${IMAGE_DIR}/MLO ${BOOT_MNT}
 cp ${IMAGE_DIR}/u-boot.img ${BOOT_MNT}
 cp ${IMAGE_DIR}/uImage-${MACHINE}.bin ${BOOT_MNT}/uImage
-tar xaf ${IMAGE_DIR}/meson-image-${MACHINE}.tar.bz2 -C ${ROOTFS_MNT}
+tar xaf ${IMAGE_DIR}/${IMAGE}-${MACHINE}.tar.bz2 -C ${ROOTFS_MNT}
 
 sync
 
