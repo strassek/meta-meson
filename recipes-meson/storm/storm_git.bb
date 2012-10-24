@@ -4,33 +4,30 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=052799322e1f595d169a8c05a5624327"
 SRCREV = "${AUTOREV}"
 SRC_URI = "git://github.com/strassek/${PN}.git;protocol=git;branch=meson \
            file://storm.conf \
-           file://init \
-"
+           file://init"
 
 RDEPENDS_${PN} = "python-robovero python-logging python-xmlrpc python-gst"
 
 S = "${WORKDIR}/git"
 
-inherit useradd update-rc.d
+INITSCRIPT_NAME = "${PN}"
+INITSCRIPT_PARAMS = "start 99 5 3 2 . stop 10 0 1 6 ."
 
-USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system --no-create-home --home-dir /var/run/${PN} --shell /bin/false --user-group storm"
-INITSCRIPT_PACKAGES = "${PN}"
-INITSCRIPT_NAME_${PN} = "${PN}"
-INITSCRIPT_PARAMS_${PN} = "start 99 5 3 2 . stop 10 0 1 6 ."
+inherit setuptools update-rc.d
 
-inherit setuptools
-
-do_compile_append () {
-        install -m 0644 ${WORKDIR}/${PN}.conf ${S}/
+do_configure_prepend () {
+    cp ${WORKDIR}/${PN}.conf ${S}/packaging/files/
+    cp ${WORKDIR}/init ${S}/packaging/files/
 }
 
 do_install_append () {
+	install -d ${D}${sysconfdir}
+	install -d ${D}${sysconfdir}/${PN}
+	install -m 0655 packaging/files/${PN}.conf ${D}${sysconfdir}/${PN}/
 	install -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/init ${D}${sysconfdir}/init.d/${PN}
+	install -m 0755 packaging/files/init ${D}${sysconfdir}/init.d/${PN}
 }
 
-FILES_${PN} += "${sysconfdir}/init.d/${PN}"
-FILES_${PN} += "${sysconfdir}/${PN}/${PN}.conf"
+FILES_${PN} += "${sysconfdir}/init.d/${PN} \
+                ${sysconfdir}/${PN}/${PN}.conf"
 
-CONFFILES_${PN} = "${sysconfdir}/${PN}/${PN}.conf"
