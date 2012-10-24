@@ -17,8 +17,8 @@ Poky
   branch: denzil
   revision: HEAD
 
-meta-gumstix-bsp
-  URI: git://github.com/strassek/meta-gumstix-bsp.git
+meta-meson-bsp
+  URI: git://git.yoctoproject.org/meta-meson-bsp.git
   branch: master
   revision: HEAD
 
@@ -33,7 +33,7 @@ Building meta-meson
   git clone -b denzil git://git.yoctoproject.org/poky
   cd poky
   git clone git://git.yoctoproject.org/meta-meson
-  git clone git://github.com/strassek/meta-gumstix-bsp
+  git clone git://git.yoctoproject.org/meta-meson-bsp
   . ./oe-init-build-env
 
   # In order to build the dsp accelerated codecs, you will need to manually
@@ -64,13 +64,13 @@ Building meta-meson
   DISTRO = "meson"
   LICENSE_FLAGS_WHITELIST += "commercial"
 
-  # After you are finished editing local.conf, be sure to add the layer to
+  # After you are finished editing local.conf, be sure to add the layers to
   # your bblayers.conf file. For example:
   BBLAYERS ?= " \
     /home/strassek/poky/meta \
     /home/strassek/poky/meta-yocto \
     /home/strassek/poky/meta-meson \
-    /home/strassek/poky/meta-gumstix-bsp \
+    /home/strassek/poky/meta-meson-bsp \
     "
 
   # That should be all the changes you need to make. To start a build run 
