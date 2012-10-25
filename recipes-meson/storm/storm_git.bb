@@ -1,8 +1,8 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=052799322e1f595d169a8c05a5624327"
 
-SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/strassek/${PN}.git;protocol=git;branch=meson \
+SRCREV = "39236ed9f6415d6828e4e7519518c4ab24248702"
+SRC_URI = "git://github.com/strassek/${PN}.git;protocol=git \
            file://storm.conf \
            file://init"
 
