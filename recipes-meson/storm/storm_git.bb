@@ -1,12 +1,12 @@
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=052799322e1f595d169a8c05a5624327"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=0d5dcf559771b5142692b137fa69bae9"
 
 SRCREV = "${AUTOREV}"
 SRC_URI = "git://github.com/strassek/${PN}.git;protocol=git \
            file://storm.conf \
            file://init"
 
-RDEPENDS_${PN} = "python-robovero python-logging python-xmlrpc python-gst"
+RDEPENDS_${PN} = "python-logging python-xmlrpc python-gst"
 
 S = "${WORKDIR}/git"
 
@@ -28,6 +28,9 @@ do_install_append () {
 	install -m 0755 packaging/files/init ${D}${sysconfdir}/init.d/${PN}
 }
 
-FILES_${PN} += "${sysconfdir}/init.d/${PN} \
-                ${sysconfdir}/${PN}/${PN}.conf"
+FILES_${PN}-server += "${sysconfdir}/init.d/${PN} \
+                       ${sysconfdir}/${PN}/${PN}.conf"
 
+PACKAGES =+ "${PN}-client ${PN}-server"
+RDEPENDS_${PN}-client = "python-pygtk"
+RDEPENDS_${PN}-server = "python-robovero"

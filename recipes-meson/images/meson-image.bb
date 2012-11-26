@@ -26,6 +26,7 @@ MESON_INSTALL = " \
   python-robovero \
   storm \
 "
+RDEPENDS_storm += "storm-server"
 
 TI_DSP_INSTALL = " \
   task-gstreamer-ti \
