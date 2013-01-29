@@ -1,10 +1,10 @@
 LICENSE = "LGPL-3.0 & MIT"
-LIC_FILES_CHKSUM = "file://COPYING.MIT;md5=0d5dcf559771b5142692b137fa69bae9 \
+LIC_FILES_CHKSUM = "file://COPYING.MIT;md5=838c366f69b72c5df05c96dff79b35f2 \
                     file://COPYING;md5=d32239bcb673463ab874e80d47fae504 \
                     file://COPYING.LESSER;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
-SRCREV = "39236ed9f6415d6828e4e7519518c4ab24248702"
-SRC_URI = "git://github.com/strassek/${PN}.git;protocol=git \
+SRCREV = "8d89cc796be476fe571dbf2922db85eac5ea07db"
+SRC_URI = "git://git.yoctoproject.org/${PN}.git;protocol=git \
            file://storm.conf \
            file://init"
 
