@@ -1,5 +1,7 @@
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=052799322e1f595d169a8c05a5624327"
+LICENSE = "LGPL-3.0 & MIT"
+LIC_FILES_CHKSUM = "file://COPYING.MIT;md5=0d5dcf559771b5142692b137fa69bae9 \
+                    file://COPYING;md5=d32239bcb673463ab874e80d47fae504 \
+                    file://COPYING.LESSER;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
 SRCREV = "39236ed9f6415d6828e4e7519518c4ab24248702"
 SRC_URI = "git://github.com/strassek/${PN}.git;protocol=git \
