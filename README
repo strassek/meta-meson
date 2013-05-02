@@ -6,9 +6,6 @@ distribution designed for use in UAV applications. Project Meson is currently
 interested in delivering an indoor advertising blimp, capable of autonomous
 operation.
 
-For more project information please visit: 
-  https://wiki.yoctoproject.org/collab/Meson
-
 Dependencies
 ------------
 
